@@ -1,4 +1,8 @@
-import { ToolLoopAgent } from 'ai';
+import {
+  ToolLoopAgent,
+  type InferAgentUIMessage,
+  type UIToolInvocation,
+} from 'ai';
 import {
   getAllCategories,
   getProductDetails,
@@ -20,3 +24,11 @@ Ask for the order ID and reason if they haven't provided them.
 Example order IDs are 11111, 22222, and 33333.`,
   tools: { getAllCategories, getProductDetails, returnOrder, searchProducts },
 });
+
+export type ShoppingAgentUIMessage = InferAgentUIMessage<typeof shoppingAgent>;
+export type SearchProductsToolInvocation = UIToolInvocation<
+  typeof searchProducts
+>;
+export type ProductDetailsToolInvocation = UIToolInvocation<
+  typeof getProductDetails
+>;

@@ -119,7 +119,17 @@ export const getProductDetails = tool({
   execute: async ({ productId }) => {
     try {
       const product = await getProductById(productId);
-      return { product };
+      return {
+        name: product.name,
+        description: product.description,
+        price: product.price,
+        currency: product.currency,
+        category: product.category,
+        images: product.images,
+        tags: product.tags,
+        slug: product.slug,
+        id: product.id,
+      };
     } catch (err) {
       const message =
         err instanceof ApiRequestError ? err.message : 'Unknown error';
